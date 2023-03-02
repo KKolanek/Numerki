@@ -5,8 +5,18 @@ print("Wybierz rodzaj funkcji: \n"
 choice = input("Twój wybór: ")
 
 if choice == "1":
-    print("Wybór f. tryg")
+    print("Wybór f. trygometrycznych:\n"
+          "1. sin(x)\n"
+          "2. cos(x)\n"
+          "3. sin(2x)\n"
+          "4. cos(2x)")
+    choice2 = input("Twój wybór: ")
+
 elif choice == "2":
-    print("Wybór f. wielo")
+    stopien = input("Podaj stopień wielomianu: ")
+
 elif choice == "3":
-    print("Wybór f. wykł")
+    podst = input("Podaj podstawe funkcji wykładniczej: ")
+
+else:
+    print("Zły wybór!!!")
