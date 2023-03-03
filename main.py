@@ -1,5 +1,5 @@
 # Wybór funkcji
-from math import sin, cos, tan
+from math import sin, cos
 
 from Bisekcja import bisekcja
 
@@ -16,17 +16,13 @@ def wybor_fun():
         print("Wybór f. trygometrycznych:\n"
               "1. sin(x)\n"
               "2. cos(x)\n"
-              "3. 2sin(x)\n"
-              "4. 2cos(x)")
+              "3. sin(2x)\n"
+              "4. cos(2x)")
         choice2 = input("Twój wybór: ")
         if choice2 == "1":
             wybrana = sin
         elif choice2 == "2":
             wybrana = cos
-        elif choice2 == "3":
-            wybrana = tan
-        elif choice2 == "4":
-            wybrana = 1 / tan
 
     elif choice == "2":
         stopien = input("Podaj stopień wielomianu: ")
