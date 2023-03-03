@@ -16,8 +16,9 @@ if choice == "1":
 
 elif choice == "2":
     stopien = input("Podaj stopień wielomianu: ")
-    for i in range(stopien, 0):
-        wspol = input("Podaj wspołczynnik przy argumencie o potędze " + stopien + ":")
+    wspolczynniki = [0 for i in range(int(stopien)+1)]
+    for i in range(0,int (stopien)+1):
+        wspolczynniki[i] =int (input("Podaj wspołczynnik przy argumencie o potędze " + str(stopien) + ":"))
 
 elif choice == "3":
     podst = input("Podaj podstawe funkcji wykładniczej: ")
