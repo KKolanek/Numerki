@@ -70,3 +70,5 @@ maks = input("Watrość maksymalna: ")
 # Wynik
 if choice3 == "1":
     print("\nWynik: " + str(bisekcja(wybor_fun(), float(mini), float(maks), int(itera), float(dokl))))
+elif choice3 == "2":
+    print("\nWynik: ")
