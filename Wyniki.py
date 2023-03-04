@@ -1,4 +1,4 @@
-from cmath import sin, cos
+from math import sin, cos
 
 
 def wykladnicza(podstawa,wykladnik):
@@ -12,8 +12,8 @@ def oblicz_sin_2x(x):
 def oblicz_cos_2x(x):
     return cos(x)**2-sin(x)**2
 def horner(wspolczynniki,stopien,wartosc_x):
-    wynik = wspolczynniki[0];
+    wynik = wspolczynniki[0]
     for i in range(1,stopien+1):
         wynik = wynik * wartosc_x + wspolczynniki[i]
 
-    return wynik;
+    return wynik

@@ -2,6 +2,7 @@
 from math import sin, cos
 
 from Bisekcja import bisekcja
+from Wyniki import oblicz_cos_2x, oblicz_sin_2x
 
 
 def wybor_fun():
@@ -23,10 +24,10 @@ def wybor_fun():
             wybrana = sin
         elif choice2 == "2":
             wybrana = cos
-        # elif choice2 == "3":
-        #     wybrana = 2 * sin * cos
-        # elif choice2 == "4":
-        #     wybrana = 1 - 2 * sin * sin
+        elif choice2 == "3":
+            wybrana = oblicz_sin_2x
+        elif choice2 == "4":
+            wybrana = oblicz_cos_2x
 
     elif choice == "2":
         stopien = input("Podaj stopień wielomianu: ")
