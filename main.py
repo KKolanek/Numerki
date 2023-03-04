@@ -23,6 +23,10 @@ def wybor_fun():
             wybrana = sin
         elif choice2 == "2":
             wybrana = cos
+        # elif choice2 == "3":
+        #     wybrana = 2 * sin * cos
+        # elif choice2 == "4":
+        #     wybrana = 1 - 2 * sin * sin
 
     elif choice == "2":
         stopien = input("Podaj stopień wielomianu: ")
