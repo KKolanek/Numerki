@@ -1,10 +1,10 @@
 # Wybór funkcji
 from math import sin, cos
 
+import Wyniki
 from Bisekcja import bisekcja
+from Falsi import znajdz_miejsce_zerowe
 from Wyniki import oblicz_cos_2x, oblicz_sin_2x, oblicz_sin, oblicz_cos, horner
-from Wyniki import oblicz_cos_2x, oblicz_sin_2x
-
 
 
 def wybor_fun():
@@ -33,13 +33,15 @@ def wybor_fun():
             wybrana = oblicz_cos_2x
 
     elif choice == "2":
-        stopien = input("Podaj stopień wielomianu: ")
-        wspolczynniki = [0 for i in range(int(stopien) + 1)]
-        for i in range(0, int(stopien) + 1):
-            wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(stopien) + ":"))
-            wybrana=horner(wspolczynniki,stopien,)
+        Wyniki.stopien = input("Podaj stopień wielomianu: ")
+        Wyniki.wspolczynniki = [int(Wyniki.stopien) + 1]
+        for i in range(int(Wyniki.stopien) + 1, 0):
+            Wyniki.wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(i) + ": "))
+            wybrana = Wyniki.horner
+
     elif choice == "3":
-        podst = input("Podaj podstawe funkcji wykładniczej: ")
+        Wyniki.podstawa = int(input("Podaj podstawe funkcji wykładniczej: "))
+        wybrana = Wyniki.wykladnicza
 
     elif choice == "4":
         print("Wybierz funkcje zewneczna\n"
@@ -48,7 +50,7 @@ def wybor_fun():
               "3. sin(2x)\n"
               "4. cos(2x)"
               )
-        zewneczna=input("Podaj wybor")
+        zewneczna = input("Podaj wybor")
         stopien = input("Wpisz stopien wielomianowej funkcje wewneczna ")
         wspolczynniki = [0 for i in range(int(stopien) + 1)]
         for i in range(0, int(stopien) + 1):
@@ -61,10 +63,12 @@ def wybor_fun():
             wybrana = oblicz_sin_2x(horner(wspolczynniki, stopien))
         elif zewneczna == "4":
             wybrana = oblicz_cos_2x(horner(wspolczynniki, stopien))
+
     else:
         print("Zły wybór!!!")
 
     return wybrana
+
 
 # Wybór metody
 
@@ -76,8 +80,8 @@ if choice3 != "1" and choice3 != "2":
     print("Zły wybór")
 
 # Kryterium stopu
-itera = 1 * 10 ** 20
-dokl = 1 * 10 ** -20
+itera = 0
+dokl = 0
 print("Wybierz kryterium stopu: \n"
       "1. Ilość iteracji\n"
       "2. Zadana dokładność\n")
@@ -97,6 +101,6 @@ maks = input("Watrość maksymalna: ")
 
 # Wynik
 if choice3 == "1":
-    print("\nWynik: " + str(bisekcja(wybor_fun(), float(mini), float(maks), int(itera), float(dokl))))
+    print("\nWynik: " + str(bisekcja(wybor_fun(), float(mini), float(maks), int(itera), float(dokl), choice4)))
 elif choice3 == "2":
-    print("\nWynik: " + str(bisekcja(wybor_fun(), float(mini), float(maks),choice4, int(itera), float(dokl))))
+    print("\nWynik: " + str(znajdz_miejsce_zerowe(wybor_fun(), float(mini), float(maks), choice4, int(itera), float(dokl))))
