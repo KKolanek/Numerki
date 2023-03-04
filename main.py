@@ -1,9 +1,9 @@
 # Wybór funkcji
 from math import sin, cos
 
+import Wyniki
 from Bisekcja import bisekcja
-from Wyniki import oblicz_cos_2x, oblicz_sin_2x
-
+from Wyniki import oblicz_cos_2x, oblicz_sin_2x, wykladnicza
 
 def wybor_fun():
     wybrana = 0
@@ -36,8 +36,8 @@ def wybor_fun():
             wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(stopien) + ":"))
 
     elif choice == "3":
-        podst = input("Podaj podstawe funkcji wykładniczej: ")
-
+        Wyniki.podstawa = int(input("Podaj podstawe funkcji wykładniczej: "))
+        wybrana = wykladnicza
     else:
         print("Zły wybór!!!")
 
