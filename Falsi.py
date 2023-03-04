@@ -1,6 +1,5 @@
 
 def znajdz_miejsce_zerowe(f,x0,x1,warunek_stopu,liczba_iteracji,epsilon):
-   if f()[0] == "wielomian":
 
 
     if f(x0) * f(x1) > 0.0:
@@ -22,4 +21,4 @@ def znajdz_miejsce_zerowe(f,x0,x1,warunek_stopu,liczba_iteracji,epsilon):
         elif(step>liczba_iteracji):
             condition=False
 
-    print('\nRequired root is: %0.8f' % x2)
+    print('\nMiejsce zerowe to %0.8f' % x2)

@@ -37,10 +37,10 @@ def wybor_fun():
         wspolczynniki = [0 for i in range(int(stopien) + 1)]
         for i in range(0, int(stopien) + 1):
             wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(stopien) + ":"))
-            wybrana="wielomian",wspolczynniki,stopien
+            wybrana=horner(wspolczynniki,stopien,)
     elif choice == "3":
         podst = input("Podaj podstawe funkcji wykładniczej: ")
-        wybrana="wykladnicza",podst
+
     elif choice == "4":
         print("Wybierz funkcje zewneczna\n"
               "1. sin(x)\n"
@@ -53,19 +53,18 @@ def wybor_fun():
         wspolczynniki = [0 for i in range(int(stopien) + 1)]
         for i in range(0, int(stopien) + 1):
             wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(stopien) + ":"))
-    if zewneczna == "1":
-        wybrana = oblicz_sin(horner(wspolczynniki,stopien))
-    elif zewneczna == "2":
-        wybrana = oblicz_cos(horner(wspolczynniki,stopien))
-    elif zewneczna == "3":
-        wybrana = oblicz_sin_2x(horner(wspolczynniki,stopien))
-    elif zewneczna== "4":
-        wybrana = oblicz_cos_2x(horner(wspolczynniki,stopien))
+        if zewneczna == "1":
+            wybrana = oblicz_sin(horner(wspolczynniki, stopien))
+        elif zewneczna == "2":
+            wybrana = oblicz_cos(horner(wspolczynniki, stopien))
+        elif zewneczna == "3":
+            wybrana = oblicz_sin_2x(horner(wspolczynniki, stopien))
+        elif zewneczna == "4":
+            wybrana = oblicz_cos_2x(horner(wspolczynniki, stopien))
     else:
         print("Zły wybór!!!")
 
     return wybrana
-
 
 # Wybór metody
 
