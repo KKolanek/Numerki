@@ -1,9 +1,9 @@
 # Wybór funkcji
 from math import sin, cos
 
+import Wyniki
 from Bisekcja import bisekcja
 from Wyniki import oblicz_cos_2x, oblicz_sin_2x, oblicz_sin, oblicz_cos, horner
-from Wyniki import oblicz_cos_2x, oblicz_sin_2x
 
 
 
@@ -39,8 +39,10 @@ def wybor_fun():
             wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(stopien) + ":"))
             wybrana="wielomian",wspolczynniki,stopien
     elif choice == "3":
-        podst = input("Podaj podstawe funkcji wykładniczej: ")
-        wybrana="wykladnicza",podst
+
+        Wyniki.podstawa = int(input("Podaj podstawe funkcji wykładniczej: "))
+        wybrana = wykladnicza
+
     elif choice == "4":
         print("Wybierz funkcje zewneczna\n"
               "1. sin(x)\n"
@@ -61,7 +63,8 @@ def wybor_fun():
         wybrana = oblicz_sin_2x(horner(wspolczynniki,stopien))
     elif zewneczna== "4":
         wybrana = oblicz_cos_2x(horner(wspolczynniki,stopien))
-    else:
+   
+   else:
         print("Zły wybór!!!")
 
     return wybrana
