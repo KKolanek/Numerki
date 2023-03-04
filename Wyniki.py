@@ -1,7 +1,7 @@
 from math import sin, cos
+
 podstawa = 0
 def wykladnicza(x):
-
     return podstawa**x
 def oblicz_sin(x):
     return sin(x)
