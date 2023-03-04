@@ -80,8 +80,8 @@ if choice3 != "1" and choice3 != "2":
     print("Zły wybór")
 
 # Kryterium stopu
-itera = 1 * 10 ** 20
-dokl = 1 * 10 ** -20
+itera = 0
+dokl = 0
 print("Wybierz kryterium stopu: \n"
       "1. Ilość iteracji\n"
       "2. Zadana dokładność\n")
@@ -101,6 +101,6 @@ maks = input("Watrość maksymalna: ")
 
 # Wynik
 if choice3 == "1":
-    print("\nWynik: " + str(bisekcja(wybor_fun(), float(mini), float(maks), int(itera), float(dokl))))
+    print("\nWynik: " + str(bisekcja(wybor_fun(), float(mini), float(maks), int(itera), float(dokl), choice4)))
 elif choice3 == "2":
     print("\nWynik: " + str(znajdz_miejsce_zerowe(wybor_fun(), float(mini), float(maks), choice4, int(itera), float(dokl))))

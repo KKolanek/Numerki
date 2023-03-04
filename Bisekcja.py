@@ -1,4 +1,4 @@
-def bisekcja(fun, mini, maks, itera, dokl):
+def bisekcja(fun, mini, maks, itera, dokl, stop):
     x = 0
     if fun(mini) * fun(maks) > 0.0:
         return "Nie znaleziono miejsca zerowego w danym przedziale"
@@ -6,7 +6,7 @@ def bisekcja(fun, mini, maks, itera, dokl):
     else:
         for i in range(1, itera):
             x = (maks + mini)/2
-            if dokl > abs(maks-mini):
+            if dokl > abs(maks-mini) and stop == 2:
                 return x
             else:
                 if fun(x) * fun(mini) < 0:
