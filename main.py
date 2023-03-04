@@ -3,6 +3,8 @@ from math import sin, cos
 
 from Bisekcja import bisekcja
 from Wyniki import oblicz_cos_2x, oblicz_sin_2x, oblicz_sin, oblicz_cos, horner
+from Wyniki import oblicz_cos_2x, oblicz_sin_2x
+
 
 
 def wybor_fun():

@@ -11,6 +11,8 @@ def bisekcja(fun, mini, maks, itera, dokl):
             else:
                 if fun(x) * fun(mini) < 0:
                     maks = x
+                elif fun(x) == 0:
+                    return x
                 else:
                     mini = x
     return x
