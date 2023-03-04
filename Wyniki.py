@@ -1,10 +1,11 @@
 from math import sin, cos
 
 podstawa = 0
+wolny_wykladnicza=0
 wspolczynniki = []
 stopien = 0
 def wykladnicza(x):
-    return podstawa**x
+    return podstawa**x+wolny_wykladnicza
 def oblicz_sin(x):
     return sin(x)
 def oblicz_cos(x):
