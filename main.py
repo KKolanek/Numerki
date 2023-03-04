@@ -3,16 +3,19 @@ from math import sin, cos
 
 import Wyniki
 from Bisekcja import bisekcja
-from Wyniki import oblicz_cos_2x, oblicz_sin_2x, wykladnicza
+from Wyniki import oblicz_cos_2x, oblicz_sin_2x, oblicz_sin, oblicz_cos, horner
+
+
 
 def wybor_fun():
     wybrana = 0
     print("Wybierz rodzaj funkcji: \n"
           "1. funkcja trygometryczna\n"
           "2. fukcja wielomianowa\n"
-          "3. funkcja wykładnicza\n")
+          "3. funkcja wykładnicza\n"
+          "4. funkcja zlozona\n")
     choice = input("Twój wybór: ")
-    
+
     if choice == "1":
         print("Wybór f. trygometrycznych:\n"
               "1. sin(x)\n"
@@ -31,14 +34,37 @@ def wybor_fun():
 
     elif choice == "2":
         stopien = input("Podaj stopień wielomianu: ")
-        wspolczynniki = [0 for i in range(int(stopien)+1)]
-        for i in range(0, int(stopien)+1):
+        wspolczynniki = [0 for i in range(int(stopien) + 1)]
+        for i in range(0, int(stopien) + 1):
             wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(stopien) + ":"))
-
+            wybrana="wielomian",wspolczynniki,stopien
     elif choice == "3":
+
         Wyniki.podstawa = int(input("Podaj podstawe funkcji wykładniczej: "))
         wybrana = wykladnicza
-    else:
+
+    elif choice == "4":
+        print("Wybierz funkcje zewneczna\n"
+              "1. sin(x)\n"
+              "2. cos(x)\n"
+              "3. sin(2x)\n"
+              "4. cos(2x)"
+              )
+        zewneczna=input("Podaj wybor")
+        stopien = input("Wpisz stopien wielomianowej funkcje wewneczna ")
+        wspolczynniki = [0 for i in range(int(stopien) + 1)]
+        for i in range(0, int(stopien) + 1):
+            wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(stopien) + ":"))
+    if zewneczna == "1":
+        wybrana = oblicz_sin(horner(wspolczynniki,stopien))
+    elif zewneczna == "2":
+        wybrana = oblicz_cos(horner(wspolczynniki,stopien))
+    elif zewneczna == "3":
+        wybrana = oblicz_sin_2x(horner(wspolczynniki,stopien))
+    elif zewneczna== "4":
+        wybrana = oblicz_cos_2x(horner(wspolczynniki,stopien))
+   
+   else:
         print("Zły wybór!!!")
 
     return wybrana
@@ -77,4 +103,4 @@ maks = input("Watrość maksymalna: ")
 if choice3 == "1":
     print("\nWynik: " + str(bisekcja(wybor_fun(), float(mini), float(maks), int(itera), float(dokl))))
 elif choice3 == "2":
-    print("\nWynik: ")
+    print("\nWynik: " + str(bisekcja(wybor_fun(), float(mini), float(maks),choice4, int(itera), float(dokl))))

@@ -1,7 +1,10 @@
-def f(x):
-    return x**2
-def znajdz_miejsce_zerowe(warunek_stopu,epsilon,x0,x1,liczba_iteracji):
 
+def znajdz_miejsce_zerowe(f,x0,x1,warunek_stopu,liczba_iteracji,epsilon):
+   if f()[0] == "wielomian":
+
+
+    if f(x0) * f(x1) > 0.0:
+        return "Nie znaleziono miejsca zerowego w danym przedziale"
     condition = True
     step = 1
     while condition:
@@ -14,7 +17,7 @@ def znajdz_miejsce_zerowe(warunek_stopu,epsilon,x0,x1,liczba_iteracji):
             x0 = x2
 
         step+=1
-        if warunek_stopu=="dokladnosc":
+        if warunek_stopu==2:
             condition = abs(f(x2)) > epsilon
         elif(step>liczba_iteracji):
             condition=False
