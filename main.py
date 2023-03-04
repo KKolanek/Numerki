@@ -33,13 +33,13 @@ def wybor_fun():
             wybrana = oblicz_cos_2x
 
     elif choice == "2":
-        stopien = input("Podaj stopień wielomianu: ")
-        wspolczynniki = [0 for i in range(int(stopien) + 1)]
-        for i in range(0, int(stopien) + 1):
-            wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(stopien) + ":"))
-            wybrana = "wielomian", wspolczynniki, stopien
-    elif choice == "3":
+        Wyniki.stopien = input("Podaj stopień wielomianu: ")
+        Wyniki.wspolczynniki = [int(Wyniki.stopien) + 1]
+        for i in range(int(Wyniki.stopien) + 1, 0):
+            Wyniki.wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(i) + ": "))
+            wybrana = Wyniki.horner
 
+    elif choice == "3":
         Wyniki.podstawa = int(input("Podaj podstawe funkcji wykładniczej: "))
         wybrana = Wyniki.wykladnicza
 
