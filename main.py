@@ -38,7 +38,6 @@ def wybor_fun():
         Wyniki.wspolczynniki = [0]*(size+1)
         for i in range(size, -1, -1):
             Wyniki.wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(i) + ": "))
-            print(Wyniki.wspolczynniki[i])
         wybrana = Wyniki.wielomian
 
     elif choice == "3":
