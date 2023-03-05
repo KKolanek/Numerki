@@ -123,7 +123,7 @@ print("Podaj przedział na którym chcesz znależć miejsce zerowe")
 mini = input("Wartość minimalna: ")
 maks = input("Watrość maksymalna: ")
 
-# Wynik2
+# Wynik2222
 if choice3 == "1":
     print("\nWynik: " + str(bisekcja(wybor_fun(), float(mini), float(maks), int(itera), float(dokl), choice4)))
 elif choice3 == "2":
