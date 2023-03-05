@@ -34,13 +34,15 @@ def wybor_fun():
 
     elif choice == "2":
         Wyniki.stopien = input("Podaj stopień wielomianu: ")
-        Wyniki.wspolczynniki = [int(Wyniki.stopien) + 1]
-        for i in range(int(Wyniki.stopien) + 1, 0):
+        size = (int(Wyniki.stopien))
+        Wyniki.wspolczynniki = [0]*(size+1)
+        for i in range(size, -1, -1):
             Wyniki.wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(i) + ": "))
-            wybrana = Wyniki.horner
+        wybrana = Wyniki.wielomian
 
     elif choice == "3":
         Wyniki.podstawa = int(input("Podaj podstawe funkcji wykładniczej: "))
+        Wyniki.wolny_wykladnicza = int(input("Podaj wyraz wolny do funkcji wykladniczej: "))
         wybrana = Wyniki.wykladnicza
 
     elif choice == "4":
@@ -51,18 +53,18 @@ def wybor_fun():
               "4. cos(2x)"
               )
         zewneczna = input("Podaj wybor")
-        stopien = input("Wpisz stopien wielomianowej funkcje wewneczna ")
-        wspolczynniki = [0 for i in range(int(stopien) + 1)]
-        for i in range(0, int(stopien) + 1):
-            wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(stopien) + ":"))
+        Wyniki.stopien = input("Wpisz stopien wielomianowej funkcje wewneczna ")
+        Wyniki.wspolczynniki = [0 for i in range(int(Wyniki.stopien) + 1)]
+        for i in range(0, int(Wyniki.stopien) + 1):
+            Wyniki.wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(Wyniki.stopien) + ":"))
         if zewneczna == "1":
-            wybrana = oblicz_sin(horner(wspolczynniki, stopien))
+            wybrana = oblicz_sin(horner)
         elif zewneczna == "2":
-            wybrana = oblicz_cos(horner(wspolczynniki, stopien))
+            wybrana = oblicz_cos(horner)
         elif zewneczna == "3":
-            wybrana = oblicz_sin_2x(horner(wspolczynniki, stopien))
+            wybrana = oblicz_sin_2x(horner)
         elif zewneczna == "4":
-            wybrana = oblicz_cos_2x(horner(wspolczynniki, stopien))
+            wybrana = oblicz_cos_2x(horner)
 
     else:
         print("Zły wybór!!!")
