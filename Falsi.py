@@ -13,9 +13,10 @@ def znajdz_miejsce_zerowe(f, x0, x1, warunek_stopu, liczba_iteracji, epsilon):
             x0 = x2
 
         step += 1
-        if warunek_stopu == 2:
-            condition = abs(f(x2)) > epsilon
+        if warunek_stopu == "2":
+            condition = (abs(f(x2)) > epsilon)
         elif step > liczba_iteracji:
+            print("tu nie masz prawaa")
             condition = False
 
     return x2
