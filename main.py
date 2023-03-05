@@ -9,8 +9,6 @@ from Bisekcja import bisekcja
 from Falsi import znajdz_miejsce_zerowe
 from Wyniki import oblicz_cos_2x, oblicz_sin_2x, oblicz_sin, oblicz_cos, horner
 
-
-
 def polynomial_coefficients(xs, coeffs):
 
     order = len(coeffs)
@@ -48,18 +46,15 @@ def wybor_fun():
 
     elif choice == "2":
         Wyniki.stopien = input("Podaj stopień wielomianu: ")
-<<<<<<< HEAD
         Wyniki.wspolczynniki = [0 for i in range(int(Wyniki.stopien) + 1)]
-        for i in range(int(Wyniki.stopien) + 1, 0):
+        for i in range(0,int(Wyniki.stopien) + 1):
             Wyniki.wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(int(Wyniki.stopien)-i) + ": "))
-            wybrana = Wyniki.horner
-=======
-        size = (int(Wyniki.stopien))
-        Wyniki.wspolczynniki = [0]*(size+1)
-        for i in range(size, -1, -1):
-            Wyniki.wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(i) + ": "))
-        wybrana = Wyniki.wielomian
->>>>>>> acf47a3d049229b785ef943f1c1145c63c95b194
+        wybrana = Wyniki.horner
+        #size = (int(Wyniki.stopien))
+        #Wyniki.wspolczynniki = [0]*(size+1)
+        #for i in range(size, -1, -1):2
+            #Wyniki.wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(i) + ": "))
+        #wybrana = Wyniki.wielomian
 
     elif choice == "3":
         Wyniki.podstawa = int(input("Podaj podstawe funkcji wykładniczej: "))
@@ -77,29 +72,29 @@ def wybor_fun():
         Wyniki.stopien = input("Wpisz stopien wielomianowej funkcje wewneczna ")
         Wyniki.wspolczynniki = [0 for _ in range(int(Wyniki.stopien) + 1)]
         for i in range(0, int(Wyniki.stopien) + 1):
-            Wyniki.wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(int(Wyniki.stopien-i) + ":")))
+            Wyniki.wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(int(Wyniki.stopien) - i) + ": "))
         if zewneczna == "1":
-            wybrana = oblicz_sin(horner)
+            wybrana = Wyniki.zlozenie_sin
         elif zewneczna == "2":
-            wybrana = oblicz_cos(horner)
+            wybrana = Wyniki.zlozenie_cos
         elif zewneczna == "3":
-            wybrana = oblicz_sin_2x(horner)
+            wybrana = Wyniki.zlozenie_sin_2x
         elif zewneczna == "4":
-            wybrana = oblicz_cos_2x(horner)
+            wybrana = Wyniki.zlozenie_cos_2x
 
     else:
         print("Zły wybór!!!")
 
     return wybrana
 
-xs = np.linspace(0, 9, 10)  # Change this range according to your needs. Start, stop, number of steps.
+#xs = np.linspace(0, 9, 10)  # Change this range according to your needs. Start, stop, number of steps.
 #a = arr.array(Wyniki.wspolczynniki)
 #arr=a.reverse()
-coeffs = [0, 0, 1]  # x^2
-plt.plot(xs, polynomial_coefficients(xs, coeffs))
-plt.axhline(y=0, color='r')  # Show xs axis
-plt.axvline(x=0, color='r')  # Show y axis
-plt.show()
+#coeffs = [0, 0, 1]  # x^2
+#plt.plot(xs, polynomial_coefficients(xs, coeffs))
+#plt.axhline(y=0, color='r')  # Show xs axis
+#plt.axvline(x=0, color='r')  # Show y axis
+#plt.show()
 # Wybór metody
 print("Wybierz metodę: \n"
       "1. Metoda bisekcji\n"
