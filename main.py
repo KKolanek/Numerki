@@ -48,14 +48,22 @@ def wybor_fun():
 
     elif choice == "2":
         Wyniki.stopien = input("Podaj stopień wielomianu: ")
+<<<<<<< HEAD
         Wyniki.wspolczynniki = [0 for i in range(int(Wyniki.stopien) + 1)]
         for i in range(int(Wyniki.stopien) + 1, 0):
             Wyniki.wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(int(Wyniki.stopien)-i) + ": "))
             wybrana = Wyniki.horner
+=======
+        size = (int(Wyniki.stopien))
+        Wyniki.wspolczynniki = [0]*(size+1)
+        for i in range(size, -1, -1):
+            Wyniki.wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(i) + ": "))
+        wybrana = Wyniki.wielomian
+>>>>>>> acf47a3d049229b785ef943f1c1145c63c95b194
 
     elif choice == "3":
         Wyniki.podstawa = int(input("Podaj podstawe funkcji wykładniczej: "))
-        Wyniki.wolny_wykladnicza=int(input("Podaj wyraz wolny do funkcji wykladniczej"))
+        Wyniki.wolny_wykladnicza = int(input("Podaj wyraz wolny do funkcji wykladniczej: "))
         wybrana = Wyniki.wykladnicza
 
     elif choice == "4":

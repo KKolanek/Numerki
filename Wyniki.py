@@ -20,3 +20,10 @@ def horner(x):
         wynik = wynik * x + wspolczynniki[i]
 
     return wynik
+
+def wielomian(x):
+    wynik = 0.0
+    con = int(stopien)
+    for i in range(con, -1, -1):
+        wynik = wynik + wspolczynniki[i] * (x**i)
+    return wynik
