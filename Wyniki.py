@@ -1,7 +1,7 @@
 from math import sin, cos
 
 podstawa = 0
-wolny_wykladnicza=0
+wolny_wykladnicza = 0
 wspolczynniki = []
 stopien = 0
 def wykladnicza(x):

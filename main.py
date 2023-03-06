@@ -9,8 +9,8 @@ from Bisekcja import bisekcja
 from Falsi import znajdz_miejsce_zerowe
 from Wyniki import oblicz_cos_2x, oblicz_sin_2x
 
-def polynomial_coefficients(xs, coeffs):
 
+def polynomial_coefficients(xs, coeffs):
     order = len(coeffs)
     print(f'# This is a polynomial of order {order - 1}.')
 
@@ -18,6 +18,7 @@ def polynomial_coefficients(xs, coeffs):
     for i in range(order):
         ys += coeffs[i] * xs ** i
     return ys
+
 
 def wybor_fun():
     wybrana = 0
@@ -46,9 +47,10 @@ def wybor_fun():
 
     elif choice == "2":
         Wyniki.stopien = input("Podaj stopień wielomianu: ")
-        Wyniki.wspolczynniki = [0 for i in range(int(Wyniki.stopien) + 1)]
+        Wyniki.wspolczynniki = [0 for _ in range(int(Wyniki.stopien) + 1)]
         for i in range(0, int(Wyniki.stopien) + 1):
-            Wyniki.wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(int(Wyniki.stopien)-i) + ": "))
+            Wyniki.wspolczynniki[i] = int(
+                input("Podaj wspołczynnik przy argumencie o potędze " + str(int(Wyniki.stopien) - i) + ": "))
         wybrana = Wyniki.horner
 
     elif choice == "3":
@@ -67,7 +69,8 @@ def wybor_fun():
         Wyniki.stopien = input("Wpisz stopień wielomianowej funkcji wewnecznej: ")
         Wyniki.wspolczynniki = [0 for _ in range(int(Wyniki.stopien) + 1)]
         for i in range(0, int(Wyniki.stopien) + 1):
-            Wyniki.wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(int(Wyniki.stopien) - i) + ": "))
+            Wyniki.wspolczynniki[i] = int(
+                input("Podaj wspołczynnik przy argumencie o potędze " + str(int(Wyniki.stopien) - i) + ": "))
         if zewneczna == "1":
             wybrana = Wyniki.zlozenie_sin
         elif zewneczna == "2":
@@ -82,14 +85,15 @@ def wybor_fun():
 
     return wybrana
 
-#xs = np.linspace(0, 9, 10)  # Change this range according to your needs. Start, stop, number of steps.
-#a = arr.array(Wyniki.wspolczynniki)
-#arr=a.reverse()
-#coeffs = [0, 0, 1]  # x^2
-#plt.plot(xs, polynomial_coefficients(xs, coeffs))
-#plt.axhline(y=0, color='r')  # Show xs axis
-#plt.axvline(x=0, color='r')  # Show y axis
-#plt.show()
+
+# xs = np.linspace(0, 9, 10)  # Change this range according to your needs. Start, stop, number of steps.
+# a = arr.array(Wyniki.wspolczynniki)
+# arr=a.reverse()
+# coeffs = [0, 0, 1]  # x^2
+# plt.plot(xs, polynomial_coefficients(xs, coeffs))
+# plt.axhline(y=0, color='r')  # Show xs axis
+# plt.axvline(x=0, color='r')  # Show y axis
+# plt.show()
 # Wybór metody
 print("Wybierz metodę: \n"
       "1. Metoda bisekcji\n"
@@ -122,5 +126,5 @@ maks = input("Watrość maksymalna: ")
 if choice3 == "1":
     print("\nWynik: " + str(bisekcja(wybor_fun(), float(mini), float(maks), int(itera), float(dokl), choice4)))
 elif choice3 == "2":
-    print("\nWynik: " + str(znajdz_miejsce_zerowe(wybor_fun(), float(mini), float(maks), choice4, int(itera), float(dokl))))
-
+    print("\nWynik: " + str(
+        znajdz_miejsce_zerowe(wybor_fun(), float(mini), float(maks), choice4, int(itera), float(dokl))))
