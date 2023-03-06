@@ -6,10 +6,6 @@ wspolczynniki = []
 stopien = 0
 def wykladnicza(x):
     return podstawa**x+wolny_wykladnicza
-def oblicz_sin(x):
-    return sin(x)
-def oblicz_cos(x):
-    return cos(x)
 def oblicz_sin_2x(x):
     return 2*sin(x)*cos(x)
 def oblicz_cos_2x(x):

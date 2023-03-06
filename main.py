@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import Wyniki
 from Bisekcja import bisekcja
 from Falsi import znajdz_miejsce_zerowe
-from Wyniki import oblicz_cos_2x, oblicz_sin_2x, oblicz_sin, oblicz_cos, horner
+from Wyniki import oblicz_cos_2x, oblicz_sin_2x
 
 def polynomial_coefficients(xs, coeffs):
 
@@ -47,7 +47,7 @@ def wybor_fun():
     elif choice == "2":
         Wyniki.stopien = input("Podaj stopień wielomianu: ")
         Wyniki.wspolczynniki = [0 for i in range(int(Wyniki.stopien) + 1)]
-        for i in range(0,int(Wyniki.stopien) + 1):
+        for i in range(0, int(Wyniki.stopien) + 1):
             Wyniki.wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(int(Wyniki.stopien)-i) + ": "))
         wybrana = Wyniki.horner
         #size = (int(Wyniki.stopien))
