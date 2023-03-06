@@ -15,11 +15,10 @@ def oblicz_sin_2x(x):
 def oblicz_cos_2x(x):
     return cos(x)**2-sin(x)**2
 def horner(x):
-    wynik = wspolczynniki[0]
-    for i in range(1, stopien+1):
-        wynik = wynik * x + wspolczynniki[i]
-
-    return wynik
+    result = 0
+    for i in range(len(wspolczynniki)):
+        result = x*result + wspolczynniki[i]
+    return result
 
 def wielomian(x):
     wynik = 0.0
@@ -27,3 +26,14 @@ def wielomian(x):
     for i in range(con, -1, -1):
         wynik = wynik + wspolczynniki[i] * (x**i)
     return wynik
+def zlozenie_sin(x):
+    return sin(horner(x))
+
+def zlozenie_cos(x):
+    return cos(horner(x))
+
+def zlozenie_sin_2x(x):
+    return oblicz_sin_2x(horner(x))
+
+def zlozenie_cos_2x(x):
+    return oblicz_cos_2x(horner(x))
