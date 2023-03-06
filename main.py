@@ -50,11 +50,6 @@ def wybor_fun():
         for i in range(0, int(Wyniki.stopien) + 1):
             Wyniki.wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(int(Wyniki.stopien)-i) + ": "))
         wybrana = Wyniki.horner
-        #size = (int(Wyniki.stopien))
-        #Wyniki.wspolczynniki = [0]*(size+1)
-        #for i in range(size, -1, -1):2
-            #Wyniki.wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(i) + ": "))
-        #wybrana = Wyniki.wielomian
 
     elif choice == "3":
         Wyniki.podstawa = int(input("Podaj podstawe funkcji wykładniczej: "))

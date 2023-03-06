@@ -16,12 +16,6 @@ def horner(x):
         result = x*result + wspolczynniki[i]
     return result
 
-def wielomian(x):
-    wynik = 0.0
-    con = int(stopien)
-    for i in range(con, -1, -1):
-        wynik = wynik + wspolczynniki[i] * (x**i)
-    return wynik
 def zlozenie_sin(x):
     return sin(horner(x))
 
