@@ -9,7 +9,6 @@ from Bisekcja import bisekcja
 from Falsi import znajdz_miejsce_zerowe
 from Wyniki import oblicz_cos_2x, oblicz_sin_2x
 
-
 def polynomial_coefficients(xs, coeffs):
     order = len(coeffs)
     print(f'# This is a polynomial of order {order - 1}.')
@@ -82,7 +81,6 @@ def wybor_fun():
 
     else:
         print("Zły wybór!!!")
-
     return wybrana
 
 
