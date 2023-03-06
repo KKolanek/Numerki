@@ -68,8 +68,8 @@ def wybor_fun():
               "3. sin(2x)\n"
               "4. cos(2x)"
               )
-        zewneczna = input("Podaj wybor")
-        Wyniki.stopien = input("Wpisz stopien wielomianowej funkcje wewneczna ")
+        zewneczna = input("Podaj wybor: ")
+        Wyniki.stopien = input("Wpisz stopień wielomianowej funkcji wewnecznej: ")
         Wyniki.wspolczynniki = [0 for _ in range(int(Wyniki.stopien) + 1)]
         for i in range(0, int(Wyniki.stopien) + 1):
             Wyniki.wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(int(Wyniki.stopien) - i) + ": "))
@@ -119,7 +119,7 @@ else:
 
 # Przedział
 
-print("Podaj przedział na którym chcesz znależć miejsce zerowe")
+print("Podaj przedział na którym chcesz znależć miejsce zerowe ")
 mini = input("Wartość minimalna: ")
 maks = input("Watrość maksymalna: ")
 
