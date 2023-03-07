@@ -1,4 +1,5 @@
 def znajdz_miejsce_zerowe(f, xmin, xmax, warunek_stopu, liczba_iteracji, epsilon):
+    x0 = 0
     if f(xmin) * f(xmax) > 0.0:
         return "Nie znaleziono miejsca zerowego w danym przedziale"
     condition = True
