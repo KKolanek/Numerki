@@ -3,14 +3,22 @@ import array as arr
 from math import sin, cos
 import numpy as np
 import matplotlib.pyplot as plt
+import scipy.interpolate as spi
 
 import Wyniki
 from Bisekcja import bisekcja
 from Falsi import znajdz_miejsce_zerowe
-from Wyniki import oblicz_cos_2x, oblicz_sin_2x, oblicz_sin, oblicz_cos, horner
+from Wyniki import oblicz_cos_2x, oblicz_sin_2x, horner
 
-
-
+def rysuj():
+    plt.plot(tab_indeksy,tab_wartosc)
+    x_val = miejsce_zerowe
+    y_interp = spi.interp1d(tab_indeksy, tab_wartosc)(x_val)
+    plt.scatter(x_val, y_interp, color='r', marker='o', s=100)
+    plt.xlabel('Index')
+    plt.ylabel('Values')
+    plt.title('Graph of Index vs Values')
+    plt.show()
 def wybor_fun():
     wybrana = 0
     print("Wybierz rodzaj funkcji: \n"
@@ -39,8 +47,9 @@ def wybor_fun():
     elif choice == "2":
         Wyniki.stopien = input("Podaj stopień wielomianu: ")
         Wyniki.wspolczynniki = [0 for i in range(int(Wyniki.stopien) + 1)]
-        for i in range(0,int(Wyniki.stopien) + 1):
-            Wyniki.wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(int(Wyniki.stopien)-i) + ": "))
+        for i in range(0, int(Wyniki.stopien) + 1):
+            Wyniki.wspolczynniki[i] = int(
+                input("Podaj wspołczynnik przy argumencie o potędze " + str(int(Wyniki.stopien) - i) + ": "))
         wybrana = Wyniki.horner
 
 
@@ -60,7 +69,8 @@ def wybor_fun():
         Wyniki.stopien = input("Wpisz stopien wielomianowej funkcje wewneczna ")
         Wyniki.wspolczynniki = [0 for _ in range(int(Wyniki.stopien) + 1)]
         for i in range(0, int(Wyniki.stopien) + 1):
-            Wyniki.wspolczynniki[i] = int(input("Podaj wspołczynnik przy argumencie o potędze " + str(int(Wyniki.stopien) - i) + ": "))
+            Wyniki.wspolczynniki[i] = int(
+                input("Podaj wspołczynnik przy argumencie o potędze " + str(int(Wyniki.stopien) - i) + ": "))
         if zewneczna == "1":
             wybrana = Wyniki.zlozenie_sin
         elif zewneczna == "2":
@@ -72,7 +82,16 @@ def wybor_fun():
 
     else:
         print("Zły wybór!!!")
+
+    tab_indeksy[0] = int(mini)
+    tab_wartosc[0] = wybrana(int(mini))
+    skok = 0.01
+    for i in range(1, liczba_punktow):
+        tab_indeksy[i] = int(mini) + skok
+        tab_wartosc[i]=wybrana(int(mini)+skok)
+        skok += 0.01
     return wybrana
+
 
 # Wybór metody
 print("Wybierz metodę: \n"
@@ -102,9 +121,16 @@ print("Podaj przedział na którym chcesz znależć miejsce zerowe")
 mini = input("Wartość minimalna: ")
 maks = input("Watrość maksymalna: ")
 
-# Wynik2222
+miejsce_zerowe=0
+liczba_punktow = (int(maks) - int(mini)) * 100
+tab_indeksy = [0 for _ in range(liczba_punktow)]
+tab_wartosc = [0 for _ in range(liczba_punktow)]
+
 if choice3 == "1":
-    print("\nWynik: " + str(bisekcja(wybor_fun(), float(mini), float(maks), int(itera), float(dokl), choice4)))
+    miejsce_zerowe= bisekcja(wybor_fun(), float(mini), float(maks), int(itera), float(dokl), choice4)
+    print("\nWynik: "+ str(miejsce_zerowe) )
 elif choice3 == "2":
-    print("\nWynik: " + str(znajdz_miejsce_zerowe(wybor_fun(), float(mini), float(maks), choice4, int(itera), float(dokl))))
-#
+    miejsce_zerowe=znajdz_miejsce_zerowe(wybor_fun(), float(mini), float(maks), choice4, int(itera), float(dokl))
+    print("\nWynik: " + str(
+        miejsce_zerowe))
+rysuj()
