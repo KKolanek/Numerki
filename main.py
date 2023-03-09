@@ -1,24 +1,26 @@
 # Wybór funkcji
-import array as arr
+
 from math import sin, cos
-import numpy as np
 import matplotlib.pyplot as plt
+import scipy.interpolate as spi
 
 import Wyniki
 from Bisekcja import bisekcja
 from Falsi import znajdz_miejsce_zerowe
 from Wyniki import oblicz_cos_2x, oblicz_sin_2x
 
-def polynomial_coefficients(xs, coeffs):
-    order = len(coeffs)
-    print(f'# This is a polynomial of order {order - 1}.')
-
-    ys = np.zeros(len(xs))  # Initialise an array of zeros of the required length.
-    for i in range(order):
-        ys += coeffs[i] * xs ** i
-    return ys
-
-
+def rysuj():
+    plt.plot(tab_indeksy, tab_wartosc)
+    x_val = miejsce_zerowe
+    y_interp = spi.interp1d(tab_indeksy, tab_wartosc)(x_val)
+    plt.scatter(x_val, y_interp, color='r', marker='o', s=100)
+    plt.xlabel('Indeksy')
+    plt.ylabel('Wartości')
+    plt.grid('show')
+    plt.axhline(0, color="black")
+    plt.axvline(0, color="black")
+    plt.title('Wykres funkcji')
+    plt.show()
 def wybor_fun():
     wybrana = 0
     print("Wybierz rodzaj funkcji: \n"
@@ -65,7 +67,7 @@ def wybor_fun():
               "4. cos(2x)"
               )
         zewneczna = input("Podaj wybor: ")
-        Wyniki.stopien = input("Wpisz stopień wielomianowej funkcji wewnecznej: ")
+        Wyniki.stopien = input("Wpisz stopien wielomianowej funkcje wewneczna: ")
         Wyniki.wspolczynniki = [0 for _ in range(int(Wyniki.stopien) + 1)]
         for i in range(0, int(Wyniki.stopien) + 1):
             Wyniki.wspolczynniki[i] = int(
@@ -81,17 +83,17 @@ def wybor_fun():
 
     else:
         print("Zły wybór!!!")
+
+    tab_indeksy[0] = int(mini)
+    tab_wartosc[0] = wybrana(int(mini))
+    skok = 0.01
+    for i in range(1, liczba_punktow):
+        tab_indeksy[i] = int(mini) + skok
+        tab_wartosc[i] = wybrana(int(mini) + skok)
+        skok += 0.01
     return wybrana
 
 
-# xs = np.linspace(0, 9, 10)  # Change this range according to your needs. Start, stop, number of steps.
-# a = arr.array(Wyniki.wspolczynniki)
-# arr=a.reverse()
-# coeffs = [0, 0, 1]  # x^2
-# plt.plot(xs, polynomial_coefficients(xs, coeffs))
-# plt.axhline(y=0, color='r')  # Show xs axis
-# plt.axvline(x=0, color='r')  # Show y axis
-# plt.show()
 # Wybór metody
 print("Wybierz metodę: \n"
       "1. Metoda bisekcji\n"
@@ -116,13 +118,19 @@ else:
 
 # Przedział
 
-print("Podaj przedział na którym chcesz znależć miejsce zerowe ")
+print("Podaj przedział na którym chcesz znależć miejsce zerowe")
 mini = input("Wartość minimalna: ")
 maks = input("Watrość maksymalna: ")
 
-# Wynik2222
+miejsce_zerowe = 0
+liczba_punktow = (int(maks) - int(mini)) * 100
+tab_indeksy = [0 for _ in range(liczba_punktow)]
+tab_wartosc = [0 for _ in range(liczba_punktow)]
+
 if choice3 == "1":
-    print("\nWynik: " + str(bisekcja(wybor_fun(), float(mini), float(maks), int(itera), float(dokl), choice4)))
+    miejsce_zerowe = bisekcja(wybor_fun(), float(mini), float(maks), int(itera), float(dokl), choice4)
+    print("\nWynik: " + str(miejsce_zerowe))
 elif choice3 == "2":
-    print("\nWynik: " + str(
-        znajdz_miejsce_zerowe(wybor_fun(), float(mini), float(maks), choice4, int(itera), float(dokl))))
+    miejsce_zerowe = znajdz_miejsce_zerowe(wybor_fun(), float(mini), float(maks), choice4, int(itera), float(dokl))
+    print("\nWynik: " + str(miejsce_zerowe))
+rysuj()
