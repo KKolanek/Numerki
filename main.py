@@ -88,17 +88,17 @@ def wybor_fun():
     else:
         print("Zły wybór!!!")
 
-    skok = 1/1000
+    skok = 0.001
     tab_indeksy[0] = float(mini)
     tab_wartosc[0] = wybrana(float(mini))
     i = 1
-    x=round(float (mini),3)
-    while x+0.001 < float(maks):
-        x = round((float(mini) + skok),3)
-        tab_indeksy[i]=x
-        tab_wartosc[i]=wybrana(x)
-        print(tab_indeksy[i])
-        skok+=0.001
+    x = round(float(mini), 3)
+    while x + 0.001 < float(maks):
+        x = round((float(mini) + skok), 3)
+        tab_indeksy[i] = x
+        tab_wartosc[i] = wybrana(x)
+        # print(tab_indeksy[i])
+        skok += 0.001
         i += 1
     return wybrana
 
@@ -132,8 +132,8 @@ mini = input("Wartość minimalna: ")
 maks = input("Watrość maksymalna: ")
 
 miejsce_zerowe = 0
-tab_indeksy = [0] * ((int(maks) - int(mini)) * 1000)
-tab_wartosc = [0] * ((int(maks) - int(mini)) * 1000)
+tab_indeksy = [0] * (int((float(maks) - float(mini)) * 1000) + 1)
+tab_wartosc = [0] * (int((float(maks) - float(mini)) * 1000) + 1)
 
 
 if choice3 == "1":
