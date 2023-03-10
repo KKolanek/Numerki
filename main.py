@@ -10,15 +10,19 @@ from Bisekcja import bisekcja
 from Falsi import znajdz_miejsce_zerowe
 from Wyniki import oblicz_cos_2x, oblicz_sin_2x, horner
 
+
 def rysuj():
-    plt.plot(tab_indeksy,tab_wartosc)
-    x_val = miejsce_zerowe
-    y_interp = spi.interp1d(tab_indeksy, tab_wartosc)(x_val)
-    plt.scatter(x_val, y_interp, color='r', marker='o', s=100)
+    plt.plot(tab_indeksy, tab_wartosc)
+    if isinstance(miejsce_zerowe, float):
+        x_val = miejsce_zerowe
+        y_interp = spi.interp1d(tab_indeksy, tab_wartosc)(x_val)
+        plt.scatter(x_val, y_interp, color='r', marker='o', s=100)
     plt.xlabel('Index')
     plt.ylabel('Values')
     plt.title('Graph of Index vs Values')
     plt.show()
+
+
 def wybor_fun():
     wybrana = 0
     print("Wybierz rodzaj funkcji: \n"
@@ -82,14 +86,17 @@ def wybor_fun():
 
     else:
         print("Zły wybór!!!")
-
-    tab_indeksy[0] = int(mini)
-    tab_wartosc[0] = wybrana(int(mini))
-    skok = 0.01
-    for i in range(1, liczba_punktow):
-        tab_indeksy[i] = int(mini) + skok
-        tab_wartosc[i]=wybrana(int(mini)+skok)
-        skok += 0.01
+    skok = abs((float(maks) - float(mini))/1000)
+    tab_indeksy[0] = float(mini)
+    tab_wartosc[0] = wybrana(float(mini))
+    i = 1
+    while float(mini) + skok <= float(maks):
+        tab_indeksy[i]=(float(mini) + skok)
+        tab_wartosc[i]=(wybrana(float(mini) + skok))
+        print(tab_indeksy[i])
+        print(tab_wartosc[i])
+        skok += abs((float(maks) - float(mini))/1000)
+        i += 1
     return wybrana
 
 
@@ -121,16 +128,15 @@ print("Podaj przedział na którym chcesz znależć miejsce zerowe")
 mini = input("Wartość minimalna: ")
 maks = input("Watrość maksymalna: ")
 
-miejsce_zerowe=0
-liczba_punktow = (int(maks) - int(mini)) * 100
-tab_indeksy = [0 for _ in range(liczba_punktow)]
-tab_wartosc = [0 for _ in range(liczba_punktow)]
+miejsce_zerowe = 0
+tab_indeksy = [0] * ((int(maks) - int(mini)) * 1000)
+tab_wartosc = [0] * ((int(maks) - int(mini)) * 1000)
 
 if choice3 == "1":
-    miejsce_zerowe= bisekcja(wybor_fun(), float(mini), float(maks), int(itera), float(dokl), choice4)
-    print("\nWynik: "+ str(miejsce_zerowe) )
+    miejsce_zerowe = bisekcja(wybor_fun(), float(mini), float(maks), int(itera), float(dokl), choice4)
+    print("\nWynik: " + str(miejsce_zerowe))
 elif choice3 == "2":
-    miejsce_zerowe=znajdz_miejsce_zerowe(wybor_fun(), float(mini), float(maks), choice4, int(itera), float(dokl))
+    miejsce_zerowe = znajdz_miejsce_zerowe(wybor_fun(), float(mini), float(maks), choice4, int(itera), float(dokl))
     print("\nWynik: " + str(
         miejsce_zerowe))
 rysuj()
