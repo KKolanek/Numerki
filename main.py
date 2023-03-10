@@ -130,8 +130,8 @@ mini = input("Wartość minimalna: ")
 maks = input("Watrość maksymalna: ")
 
 miejsce_zerowe = 0
-tab_indeksy = [0] * (int((float(maks) - float(mini)) * 1000) + 1)
-tab_wartosc = [0] * (int((float(maks) - float(mini)) * 1000) + 1)
+tab_indeksy = [0] * (int((float(maks) - float(mini)) * 1000))
+tab_wartosc = [0] * (int((float(maks) - float(mini)) * 1000))
 
 
 if choice3 == "1":
