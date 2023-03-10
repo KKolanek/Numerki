@@ -98,8 +98,6 @@ def wybor_fun():
         x = round((float(mini) + skok),3)
         tab_indeksy[i]=x
         tab_wartosc[i]=wybrana(x)
-        print(tab_indeksy[i])
-        print(tab_wartosc[i])
         skok+=0.001
         i += 1
     return wybrana
@@ -134,8 +132,8 @@ mini = input("Wartość minimalna: ")
 maks = input("Watrość maksymalna: ")
 
 miejsce_zerowe = 0
-tab_indeksy = [0] * (int((float(maks) - float(mini)) * 1000)+1)
-tab_wartosc = [0] * (int((float(maks) - float(mini)) * 1000)+1)
+tab_indeksy = [0] * (int((float(maks) - float(mini)) * 1000))
+tab_wartosc = [0] * (int((float(maks) - float(mini)) * 1000))
 print(int((float(maks) - float(mini)) * 1000))
 
 if choice3 == "1":
