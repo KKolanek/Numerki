@@ -3,7 +3,6 @@
 from math import sin, cos
 import matplotlib.pyplot as plt
 import scipy.interpolate as spi
-
 import Wyniki
 from Bisekcja import bisekcja
 from Falsi import znajdz_miejsce_zerowe
@@ -97,7 +96,6 @@ def wybor_fun():
         x = round((float(mini) + skok), 3)
         tab_indeksy[i] = x
         tab_wartosc[i] = wybrana(x)
-        # print(tab_indeksy[i])
         skok += 0.001
         i += 1
     return wybrana
