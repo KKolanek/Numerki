@@ -1,14 +1,13 @@
 # Wybór funkcji
-import array as arr
+
 from math import sin, cos
-import numpy as np
 import matplotlib.pyplot as plt
 import scipy.interpolate as spi
 
 import Wyniki
 from Bisekcja import bisekcja
 from Falsi import znajdz_miejsce_zerowe
-from Wyniki import oblicz_cos_2x, oblicz_sin_2x, horner
+from Wyniki import oblicz_cos_2x, oblicz_sin_2x
 
 
 def rysuj():
@@ -17,9 +16,12 @@ def rysuj():
         x_val = miejsce_zerowe
         y_interp = spi.interp1d(tab_indeksy, tab_wartosc)(x_val)
         plt.scatter(x_val, y_interp, color='r', marker='o', s=100)
-    plt.xlabel('Index')
-    plt.ylabel('Values')
-    plt.title('Graph of Index vs Values')
+    plt.xlabel('Indeksy')
+    plt.ylabel('Wartości')
+    plt.grid('show')
+    plt.axhline(0, color="black")
+    plt.axvline(0, color="black")
+    plt.title('Wykres funkcji')
     plt.show()
 
 
@@ -50,12 +52,11 @@ def wybor_fun():
 
     elif choice == "2":
         Wyniki.stopien = input("Podaj stopień wielomianu: ")
-        Wyniki.wspolczynniki = [0 for i in range(int(Wyniki.stopien) + 1)]
+        Wyniki.wspolczynniki = [0 for _ in range(int(Wyniki.stopien) + 1)]
         for i in range(0, int(Wyniki.stopien) + 1):
             Wyniki.wspolczynniki[i] = int(
                 input("Podaj wspołczynnik przy argumencie o potędze " + str(int(Wyniki.stopien) - i) + ": "))
         wybrana = Wyniki.horner
-
 
     elif choice == "3":
         Wyniki.podstawa = int(input("Podaj podstawe funkcji wykładniczej: "))
@@ -69,8 +70,8 @@ def wybor_fun():
               "3. sin(2x)\n"
               "4. cos(2x)"
               )
-        zewneczna = input("Podaj wybor")
-        Wyniki.stopien = input("Wpisz stopien wielomianowej funkcje wewneczna ")
+        zewneczna = input("Podaj wybor: ")
+        Wyniki.stopien = input("Wpisz stopien wielomianowej funkcje wewneczna: ")
         Wyniki.wspolczynniki = [0 for _ in range(int(Wyniki.stopien) + 1)]
         for i in range(0, int(Wyniki.stopien) + 1):
             Wyniki.wspolczynniki[i] = int(
@@ -86,6 +87,7 @@ def wybor_fun():
 
     else:
         print("Zły wybór!!!")
+
     skok = abs((float(maks) - float(mini))/1000)
     tab_indeksy[0] = float(mini)
     tab_wartosc[0] = wybrana(float(mini))
@@ -97,6 +99,7 @@ def wybor_fun():
         print(tab_wartosc[i])
         skok += abs((float(maks) - float(mini))/1000)
         i += 1
+
     return wybrana
 
 
@@ -132,6 +135,7 @@ miejsce_zerowe = 0
 tab_indeksy = [0] * ((int(maks) - int(mini)) * 1000)
 tab_wartosc = [0] * ((int(maks) - int(mini)) * 1000)
 
+
 if choice3 == "1":
     miejsce_zerowe = bisekcja(wybor_fun(), float(mini), float(maks), int(itera), float(dokl), choice4)
     print("\nWynik: " + str(miejsce_zerowe))
@@ -140,3 +144,5 @@ elif choice3 == "2":
     print("\nWynik: " + str(
         miejsce_zerowe))
 rysuj()
+
+
