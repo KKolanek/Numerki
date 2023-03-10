@@ -88,18 +88,18 @@ def wybor_fun():
     else:
         print("Zły wybór!!!")
 
-    skok = abs((float(maks) - float(mini))/1000)
+    skok = 1/1000
     tab_indeksy[0] = float(mini)
     tab_wartosc[0] = wybrana(float(mini))
     i = 1
-    while float(mini) + skok <= float(maks):
-        tab_indeksy[i]=(float(mini) + skok)
-        tab_wartosc[i]=(wybrana(float(mini) + skok))
+    x=round(float (mini),3)
+    while x+0.001 < float(maks):
+        x = round((float(mini) + skok),3)
+        tab_indeksy[i]=x
+        tab_wartosc[i]=wybrana(x)
         print(tab_indeksy[i])
-        print(tab_wartosc[i])
-        skok += abs((float(maks) - float(mini))/1000)
+        skok+=0.001
         i += 1
-
     return wybrana
 
 
@@ -143,6 +143,5 @@ elif choice3 == "2":
     miejsce_zerowe = znajdz_miejsce_zerowe(wybor_fun(), float(mini), float(maks), choice4, int(itera), float(dokl))
     print("\nWynik: " + str(
         miejsce_zerowe))
+    print(tab_indeksy)
 rysuj()
-
-
