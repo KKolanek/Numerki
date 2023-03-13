@@ -94,10 +94,8 @@ def wybor_fun():
     x = round(float(mini), 3)
     while x + 0.001 <= float(maks):
         x = round((float(mini) + skok), 3)
-        print(i)
         tab_indeksy[i] = x
         tab_wartosc[i] = wybrana(x)
-        print(tab_indeksy[i])
         skok += 0.001
         i += 1
     return wybrana
@@ -141,7 +139,5 @@ if choice3 == "1":
     print("\nWynik: " + str(miejsce_zerowe))
 elif choice3 == "2":
     miejsce_zerowe = znajdz_miejsce_zerowe(wybor_fun(), float(mini), float(maks), choice4, int(itera), float(dokl))
-    print("\nWynik: " + str(
-        miejsce_zerowe))
-    print(tab_indeksy)
+    print("\nWynik: " + str(miejsce_zerowe))
 rysuj()
